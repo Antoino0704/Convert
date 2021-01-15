@@ -6,7 +6,7 @@ from PIL import Image
 
 
 
-class Imaggine:
+class Immaggine:
     def __init__(self, win):
         #creazione menu
         menu = tk.Menu(win)
@@ -43,5 +43,5 @@ win = tk.Tk()
 win.geometry('600x600')
 win.grid_columnconfigure(0, weight=1)
 win.iconbitmap("Icon.ico")
-c = Imaggine(win)
+c = Immaggine(win)
 win.mainloop()
