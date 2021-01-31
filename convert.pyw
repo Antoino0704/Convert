@@ -4,9 +4,6 @@ import tkinter.messagebox
 from PIL import Image, ImageTk
 
 
-
-
-
 class Immaggine:
     def __init__(self, win):
         #creazione menu
@@ -29,8 +26,8 @@ class Immaggine:
     def Apri(self):
         a = tkinter.filedialog.askopenfilename(defaultextension='.png', filetypes=[('file png', '*.png'), ('file jpg', '*.jpg'), ('file bitmap', '*.bmp'), ('tutti i file', '*.*')])
         self.img = Image.open(a)
-        img2 = Image.open(a)
-        imgRez = img2.resize((200, 200), Image.ANTIALIAS)
+        self.img2 = Image.open(a)
+        imgRez = self.img2.resize((200, 200), Image.ANTIALIAS)
         self.imageTk = ImageTk.PhotoImage(imgRez)
         self.l1 = tk.Label(win, image=self.imageTk)
         self.l1.grid(row=10,column=0, pady=100)
@@ -40,7 +37,9 @@ class Immaggine:
     def Converti(self):
         im = self.img.convert('L')
         save = tkinter.filedialog.asksaveasfilename(defaultextension='.png', filetypes=[('file png', '*.png'), ('file jpg', '*.jpg'), ('file bitmap', '*.bmp'), ('tutti i file', '*.*')])
-        im.save(save)
+        im.save(save) 
+        self.imageTk2 = ImageTk.PhotoImage(self.img2.convert('L').resize((200, 200), Image.ANTIALIAS))
+        self.l1.configure(image=self.imageTk2)
         self.stato.set('File convertito con successo')
 
     #information for program
